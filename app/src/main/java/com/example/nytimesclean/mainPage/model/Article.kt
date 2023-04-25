@@ -1,20 +1,15 @@
 package com.example.nytimesclean.mainPage.model
 
 import android.os.Parcelable
-import com.example.nytimesclean.mainPage.api.model.Byline
-import com.example.nytimesclean.mainPage.api.model.Headline
-import com.example.nytimesclean.mainPage.api.model.Keyword
-import com.example.nytimesclean.mainPage.api.model.Multimedia
-import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Article(
-    val `abstract`: String,
-    val documentType: String,
     val id: String,
+//  val `abstract`: String,
+    val documentType: String,
     val leadParagraph: String,
-    val imageUrl : String,
+    val imageUrl: String,
     val newsDesk: String,
     val pubDate: String,
     val sectionName: String,
@@ -25,4 +20,10 @@ data class Article(
     val uri: String,
     val webUrl: String,
     val wordCount: Int
-) : Parcelable
+) : Parcelable {
+    fun getFormatedImageURL(): String? {
+        if (imageUrl.isEmpty()) return null
+        val prefix = "https://nytimes.com/"
+        return prefix + imageUrl
+    }
+}

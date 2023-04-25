@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface MainPageApi {
 
-    @GET("svc/search/v2/articlesearch.json")
+    @GET("svc/archive/v1/2019/1.json")
     suspend fun getMostPopular(
         @Query("page") page: Int,
         @Query("q") query: String,
-        @Query("apiKey") apiKey: String = API_KEY
+        @Query("api-key") apiKey: String = API_KEY
     ): ArticlesResponse
 }

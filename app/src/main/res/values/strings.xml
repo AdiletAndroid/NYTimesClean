@@ -6,4 +6,10 @@
     <string name="top_stories">Top Stories</string>
     <string name="the_new_york_times">The New York Times</string>
     <string name="line">___________________________________________________________</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="content">Content</string>
+    <string name="author">Author</string>
+    <string name="date">Date</string>
+    <string name="link">Link</string>
 </resources>

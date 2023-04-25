@@ -1,4 +1,9 @@
 package com.example.nytimesclean.topStories.model
 
-class TopArticle {
-}
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class TopArticle(
+
+) : Parcelable

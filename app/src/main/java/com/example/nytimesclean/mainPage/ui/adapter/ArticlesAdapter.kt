@@ -2,6 +2,7 @@ package com.example.nytimesclean.mainPage.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -40,10 +41,13 @@ class ArticlesAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(article: Article) {
             with(binding) {
-                textViewTitle.text = article.leadParagraph
-                textViewDescription.text = article.abstract
-                imageView.load(article.uri)
+                textViewTitle.text = article.snippet
+                textViewDescription.text = article.source
+                val imageUrl = article.getFormatedImageURL()
+                imageView.isVisible = !imageUrl.isNullOrEmpty()
+                imageView.load(article.getFormatedImageURL())
             }
+
             itemView.setOnClickListener {
                 onItemClick.invoke(article)
             }

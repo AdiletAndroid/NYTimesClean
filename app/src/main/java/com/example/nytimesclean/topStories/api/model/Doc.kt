@@ -1,11 +1,9 @@
-package com.example.nytimesclean.mainPage.api.model
+package com.example.nytimesclean.topStories.api.model
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Doc(
-    @SerializedName("_id")
-    val id: String,
     @SerializedName("abstract")
     val `abstract`: String,
     @SerializedName("byline")
@@ -14,6 +12,8 @@ data class Doc(
     val documentType: String,
     @SerializedName("headline")
     val headline: Headline,
+    @SerializedName("_id")
+    val id: String,
     @SerializedName("keywords")
     val keywords: List<Keyword>,
     @SerializedName("lead_paragraph")
@@ -22,6 +22,10 @@ data class Doc(
     val multimedia: List<Multimedia>,
     @SerializedName("news_desk")
     val newsDesk: String,
+    @SerializedName("print_page")
+    val printPage: String,
+    @SerializedName("print_section")
+    val printSection: String,
     @SerializedName("pub_date")
     val pubDate: String,
     @SerializedName("section_name")
@@ -31,7 +35,7 @@ data class Doc(
     @SerializedName("source")
     val source: String,
     @SerializedName("subsection_name")
-    val subsectionName: String?,
+    val subsectionName: String,
     @SerializedName("type_of_material")
     val typeOfMaterial: String,
     @SerializedName("uri")

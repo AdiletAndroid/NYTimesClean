@@ -7,9 +7,9 @@ object ArticlesEnityConverter {
     fun fromEntity(entity: List<ArticleEntity>): List<Article> {
         return entity.map { data ->
             Article(
-                abstract = data.abstract,
-                documentType = data.documentType,
                 id = data.id,
+//                abstract = data.abstract,
+                documentType = data.documentType,
                 leadParagraph = data.leadParagraph,
                 imageUrl = data.imageUrl,
                 newsDesk = data.newsDesk,
@@ -29,9 +29,9 @@ object ArticlesEnityConverter {
     fun toEntity(data: List<Article>): List<ArticleEntity> {
         return data.map { article ->
             ArticleEntity(
-                abstract = article.abstract,
-                documentType = article.documentType,
                 id = article.id,
+//                abstract = article.abstract,
+                documentType = article.documentType,
                 leadParagraph = article.leadParagraph,
                 imageUrl = article.imageUrl,
                 newsDesk = article.newsDesk,

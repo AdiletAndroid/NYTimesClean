@@ -3,14 +3,16 @@ package com.example.nytimesclean.mainPage.db.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.nytimesclean.mainPage.api.model.Byline
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "articles")
 data class ArticleEntity(
     @PrimaryKey
     @ColumnInfo("articleId")
     val id: String,
-    @ColumnInfo("abstract")
-    val `abstract`: String,
+//  @ColumnInfo("abstract")
+//  val `abstract`: String,
     @ColumnInfo("documentType")
     val documentType: String,
     @ColumnInfo("leadParagraph")
