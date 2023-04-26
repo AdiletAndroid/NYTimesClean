@@ -6,4 +6,8 @@ interface DetailsPageContract {
     interface View : MvpView {
         fun showArticle()
     }
+
+    interface PopularView : MvpView {
+        fun showPopular()
+    }
 }

@@ -7,20 +7,21 @@ import kotlinx.coroutines.launch
 
 class MainPagePresenter(
     private val interactor: MainPageInteractor
-) : BasePresenter<MainPageContract.View>(), MainPageContract.Presenter {
+) : BasePresenter<MainPageContract.MainPageView>(),
+    MainPageContract.MainPagePresenter {
 
     override fun getArticles(page: Int) {
         launch {
             try {
                 interactor.loadArticles(page)
             } catch (e: Exception) {
-                Log.e("articles", "Error loadinh articles", e)
+                Log.e("articles", "Error loading articles", e)
             }
 
         }
     }
 
-    override fun attach(view: MainPageContract.View) {
+    override fun attach(view: MainPageContract.MainPageView) {
         super.attach(view)
         launch {
             interactor.getAllLocalArticlesFlow()

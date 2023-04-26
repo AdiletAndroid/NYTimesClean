@@ -3,6 +3,7 @@ package com.example.nytimesclean.common.di
 import androidx.room.Room
 import com.example.nytimesclean.mainPage.api.MainPageApi
 import com.example.nytimesclean.mainPage.db.dao.NYTDatabase
+import com.example.nytimesclean.mostPopular.db.dao.PopularDatabase
 import com.example.nytimesclean.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -39,6 +40,19 @@ object CommonModule : InjectionModule {
         single {
             val database = get<NYTDatabase>()
             database.articlesDao()
+        }
+
+        single {
+            Room.databaseBuilder(
+                androidApplication(),
+                PopularDatabase::class.java,
+                "popularDatabase"
+            ).build()
+        }
+
+        single {
+            val database = get<PopularDatabase>()
+            database.popularDao()
         }
     }
 }

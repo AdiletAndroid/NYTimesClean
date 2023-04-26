@@ -1,4 +1,4 @@
-package com.example.nytimesclean.mainPage.ui
+package com.example.nytimesclean.mostPopular.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,22 +9,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
 import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
-import com.example.nytimesclean.databinding.FragmentMainPageBinding
+import com.example.nytimesclean.databinding.FragmentPopularArticleBinding
 import com.example.nytimesclean.detailsPage.ui.DetailsPageFragment
-import com.example.nytimesclean.mainPage.model.Article
-import com.example.nytimesclean.mainPage.ui.adapter.ArticlesAdapter
-import com.example.nytimesclean.utils.Constants.KEY
+import com.example.nytimesclean.mostPopular.model.PopularArticle
+import com.example.nytimesclean.mostPopular.ui.adapter.PopularAdapter
+import com.example.nytimesclean.utils.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainPageFragment :
-    BaseMvpFragment<MainPageContract.MainPageView, MainPageContract.MainPagePresenter>(R.layout.fragment_main_page),
-    MainPageContract.MainPageView {
+class PopularArticleFragment :
+    BaseMvpFragment<PopularArticleContract.PopularPageView, PopularArticleContract.PopularPagePresenter>(R.layout.fragment_popular_article),
+    PopularArticleContract.PopularPageView {
 
-    override val presenter: MainPagePresenter by viewModel()
-    private lateinit var binding: FragmentMainPageBinding
-    private val adapter: ArticlesAdapter by lazy {
-        ArticlesAdapter { article ->
-            openDetailsPage(article)
+    override val presenter: PopularArticlePresenter by viewModel()
+    private lateinit var binding: FragmentPopularArticleBinding
+    private val popularAdapter: PopularAdapter by lazy {
+        PopularAdapter { popularArticle ->
+            openDetailsPage(popularArticle)
         }
     }
 
@@ -32,7 +32,7 @@ class MainPageFragment :
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainPageBinding.inflate(inflater, container, false)
+        binding = FragmentPopularArticleBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,23 +41,19 @@ class MainPageFragment :
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
 
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = popularAdapter
 
         val scrollListener = EndlessScrollListener(layoutManager, { page ->
-            presenter.getArticles(page)
+            presenter.getPopular(page)
         }, hasMore = true)
         binding.recyclerView.addOnScrollListener(scrollListener)
 
-        presenter.getArticles(1)
+        presenter.getPopular(1)
     }
 
-    override fun showArticles(article: List<Article>) {
-        adapter.updateList(article)
-    }
-
-    private fun openDetailsPage(article: Article) {
+    private fun openDetailsPage(popularArticle: PopularArticle) {
         val bundle = Bundle()
-        bundle.putParcelable(KEY, article)
+        bundle.putParcelable(Constants.KEY, popularArticle)
         val fragment = DetailsPageFragment()
         fragment.arguments = bundle
         loadFragment(fragment)
@@ -68,5 +64,9 @@ class MainPageFragment :
         transaction.replace(R.id.fragment_container, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
+    }
+
+    override fun showPopular(popularArticle: List<PopularArticle>) {
+        popularAdapter.updateList(popularArticle)
     }
 }

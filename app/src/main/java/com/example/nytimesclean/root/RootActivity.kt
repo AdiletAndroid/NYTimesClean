@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.nytimesclean.R
 import com.example.nytimesclean.databinding.ActivityRootBinding
 import com.example.nytimesclean.mainPage.ui.MainPageFragment
-import com.example.nytimesclean.topStories.ui.TopStoriesPageFragment
+import com.example.nytimesclean.mostPopular.ui.PopularArticleFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RootActivity : AppCompatActivity() {
@@ -28,7 +28,7 @@ class RootActivity : AppCompatActivity() {
                     true
                 }
                 R.id.topStoriesPageFragment -> {
-                    loadFragment(TopStoriesPageFragment())
+                    loadFragment(PopularArticleFragment())
                     true
                 }
                 else -> false

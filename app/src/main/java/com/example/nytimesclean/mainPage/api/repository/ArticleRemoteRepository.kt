@@ -9,6 +9,6 @@ class ArticleRemoteRepository(
     private val api: MainPageApi
 ) : ArticleRepository {
     override suspend fun getArticles(page: Int): List<Article> {
-        return ArticleDataConverter.fromNetwork(api.getMostPopular(page, "q", API_KEY))
+        return ArticleDataConverter.fromNetwork(api.getArticle(page, "q", API_KEY))
     }
 }

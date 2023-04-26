@@ -11,8 +11,6 @@ data class ArticleEntity(
     @PrimaryKey
     @ColumnInfo("articleId")
     val id: String,
-//  @ColumnInfo("abstract")
-//  val `abstract`: String,
     @ColumnInfo("documentType")
     val documentType: String,
     @ColumnInfo("leadParagraph")

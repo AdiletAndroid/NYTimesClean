@@ -2,13 +2,12 @@ package com.example.nytimesclean.mainPage.db.model
 
 import com.example.nytimesclean.mainPage.model.Article
 
-object ArticlesEnityConverter {
+object ArticlesEntityConverter {
 
     fun fromEntity(entity: List<ArticleEntity>): List<Article> {
         return entity.map { data ->
             Article(
                 id = data.id,
-//                abstract = data.abstract,
                 documentType = data.documentType,
                 leadParagraph = data.leadParagraph,
                 imageUrl = data.imageUrl,
@@ -30,7 +29,6 @@ object ArticlesEnityConverter {
         return data.map { article ->
             ArticleEntity(
                 id = article.id,
-//                abstract = article.abstract,
                 documentType = article.documentType,
                 leadParagraph = article.leadParagraph,
                 imageUrl = article.imageUrl,

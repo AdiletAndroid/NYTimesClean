@@ -6,7 +6,6 @@ object ArticleDataConverter {
     fun fromNetwork(response: ArticlesResponse) = response.response.docs.map { articleResponse ->
         Article(
             id = articleResponse.id,
-//            abstract = articleResponse.abstract,
             documentType = articleResponse.documentType,
             leadParagraph = articleResponse.leadParagraph,
             imageUrl = articleResponse.multimedia.firstOrNull()?.url.orEmpty(),

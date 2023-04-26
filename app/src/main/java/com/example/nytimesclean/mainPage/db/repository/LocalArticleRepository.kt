@@ -7,5 +7,5 @@ interface LocalArticleRepository {
 
     fun getAllLocalArticlesFlow(): Flow<List<Article>>
 
-    suspend fun saveAllArticles(heroes: List<Article>)
+    suspend fun saveAllArticles(articles: List<Article>)
 }
