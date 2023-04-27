@@ -10,14 +10,16 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
 import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentPopularArticleBinding
-import com.example.nytimesclean.detailsPage.ui.DetailsPageFragment
+import com.example.nytimesclean.detailsMostPopular.MostPopularDetailsFragment
 import com.example.nytimesclean.mostPopular.model.PopularArticle
 import com.example.nytimesclean.mostPopular.ui.adapter.PopularAdapter
 import com.example.nytimesclean.utils.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PopularArticleFragment :
-    BaseMvpFragment<PopularArticleContract.PopularPageView, PopularArticleContract.PopularPagePresenter>(R.layout.fragment_popular_article),
+    BaseMvpFragment<PopularArticleContract.PopularPageView, PopularArticleContract.PopularPagePresenter>(
+        R.layout.fragment_popular_article
+    ),
     PopularArticleContract.PopularPageView {
 
     override val presenter: PopularArticlePresenter by viewModel()
@@ -53,8 +55,8 @@ class PopularArticleFragment :
 
     private fun openDetailsPage(popularArticle: PopularArticle) {
         val bundle = Bundle()
-        bundle.putParcelable(Constants.KEY, popularArticle)
-        val fragment = DetailsPageFragment()
+        bundle.putParcelable(Constants.POPULAR_KEY, popularArticle)
+        val fragment = MostPopularDetailsFragment()
         fragment.arguments = bundle
         loadFragment(fragment)
     }

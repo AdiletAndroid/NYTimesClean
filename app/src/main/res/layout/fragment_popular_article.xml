@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:padding="4dp"
     tools:context=".mostPopular.ui.PopularArticleFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -30,6 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:listitem="@layout/item_article" />
+        tools:listitem="@layout/item_popular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

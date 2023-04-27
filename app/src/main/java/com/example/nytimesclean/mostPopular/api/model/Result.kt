@@ -13,7 +13,7 @@ data class Result(
     @SerializedName("byline")
     val byline: String,
     @SerializedName("column")
-    val column: String,
+    val column: String?,
     @SerializedName("eta_id")
     val etaId: Int,
     @SerializedName("id")

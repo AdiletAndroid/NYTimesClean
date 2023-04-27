@@ -10,7 +10,7 @@ object PopularArticleDataConverter {
             assetId = popularResponse.assetId,
             adxKeywords = popularResponse.adxKeywords,
             byline = popularResponse.byline,
-            column = popularResponse.column,
+            column = popularResponse.column.orEmpty(),
             etaId = popularResponse.etaId,
             nytdsection = popularResponse.nytdsection,
             publishedDate = popularResponse.publishedDate,

@@ -10,10 +10,10 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
 import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentMainPageBinding
-import com.example.nytimesclean.detailsPage.ui.DetailsPageFragment
+import com.example.nytimesclean.detailsMainPage.MainPageDetailsFragment
 import com.example.nytimesclean.mainPage.model.Article
 import com.example.nytimesclean.mainPage.ui.adapter.ArticlesAdapter
-import com.example.nytimesclean.utils.Constants.KEY
+import com.example.nytimesclean.utils.Constants.ARTICLE_KEY
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainPageFragment :
@@ -57,8 +57,8 @@ class MainPageFragment :
 
     private fun openDetailsPage(article: Article) {
         val bundle = Bundle()
-        bundle.putParcelable(KEY, article)
-        val fragment = DetailsPageFragment()
+        bundle.putParcelable(ARTICLE_KEY, article)
+        val fragment = MainPageDetailsFragment()
         fragment.arguments = bundle
         loadFragment(fragment)
     }

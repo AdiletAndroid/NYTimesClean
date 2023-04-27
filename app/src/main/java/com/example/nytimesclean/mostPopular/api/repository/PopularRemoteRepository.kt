@@ -10,7 +10,7 @@ class PopularRemoteRepository(
 ) : PopularRepository {
     override suspend fun getPopularArticles(page: Int): List<PopularArticle> {
         return PopularArticleDataConverter.fromNetwork(
-            api.getMostPopular(page, "q", API_KEY)
+            api.getMostPopular(API_KEY)
         )
     }
 }

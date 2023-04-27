@@ -1,13 +1,13 @@
 package com.example.nytimesclean.mostPopular.ui.adapter
 
+import android.text.method.LinkMovementMethod
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nytimesclean.common.ui.diffUtil.DiffUtilPopular
-import com.example.nytimesclean.databinding.ItemArticleBinding
+import com.example.nytimesclean.databinding.ItemPopularBinding
 import com.example.nytimesclean.mostPopular.model.PopularArticle
 
 class PopularAdapter(
@@ -24,7 +24,7 @@ class PopularAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemPopularBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, onItemClick)
     }
 
@@ -37,18 +37,22 @@ class PopularAdapter(
     }
 
     inner class ViewHolder(
-        private val binding: ItemArticleBinding,
-        private val onItemClick: (article: PopularArticle) -> Unit
+        private val binding: ItemPopularBinding,
+        private val onItemClick: (popularArticle: PopularArticle) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(article: PopularArticle) {
+        fun onBind(popularArticle: PopularArticle) {
             with(binding) {
-                textViewTitle.text = article.title
-                textViewDescription.text = article.source
-                imageView.isVisible = imageView.isGone
+                textViewTitle.text = popularArticle.title
+                textViewByline.text = popularArticle.byline
+                textViewSource.text = popularArticle.source
+                val source = popularArticle.url ?: ""
+                textViewUrl.text = String.format("For more tap: %s", source)
+                textViewUrl.autoLinkMask = Linkify.WEB_URLS
+                textViewUrl.movementMethod = LinkMovementMethod.getInstance()
             }
 
             itemView.setOnClickListener {
-                onItemClick.invoke(article)
+                onItemClick.invoke(popularArticle)
             }
         }
     }

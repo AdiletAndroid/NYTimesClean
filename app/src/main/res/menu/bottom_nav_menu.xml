@@ -9,6 +9,6 @@
     <item
         android:id="@+id/topStoriesPageFragment"
         android:icon="@drawable/ic_top_stories"
-        android:title="@string/top_stories" />
+        android:title="@string/popular" />
 
 </menu>
