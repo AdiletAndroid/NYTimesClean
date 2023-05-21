@@ -2,8 +2,8 @@ package com.example.nytimesclean
 
 import android.app.Application
 import com.example.nytimesclean.common.di.CommonModule
-import com.example.nytimesclean.mainPage.di.ArticlesModule
-import com.example.nytimesclean.mostPopular.di.PopularArticleModule
+import com.example.nytimesclean.main_page.di.ArticlesModule
+import com.example.nytimesclean.most_popular.di.PopularArticleModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin

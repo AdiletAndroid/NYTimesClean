@@ -1,11 +1,11 @@
 package com.example.nytimesclean.common.ui.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.nytimesclean.most_popular.model.PopularArticle
+import com.example.nytimesclean.main_page.model.Article
 
-class DiffUtilPopular (
-    private val oldList: MutableList<PopularArticle>,
-    private val newList: List<PopularArticle>
+class DiffUtilMain(
+    private val oldList: MutableList<Article>,
+    private val newList: List<Article>
 ) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size

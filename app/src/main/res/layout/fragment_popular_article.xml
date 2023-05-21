@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="4dp"
-    tools:context=".mostPopular.ui.PopularArticleFragment">
+    tools:context=".most_popular.ui.PopularArticleFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

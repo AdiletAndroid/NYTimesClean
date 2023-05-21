@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.nytimesclean.R
 import com.example.nytimesclean.databinding.ActivityRootBinding
-import com.example.nytimesclean.mainPage.ui.MainPageFragment
-import com.example.nytimesclean.mostPopular.ui.PopularArticleFragment
+import com.example.nytimesclean.main_page.ui.MainPageFragment
+import com.example.nytimesclean.most_popular.ui.PopularArticleFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RootActivity : AppCompatActivity() {
