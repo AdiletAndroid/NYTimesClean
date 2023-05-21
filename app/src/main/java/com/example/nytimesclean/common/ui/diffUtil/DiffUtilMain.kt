@@ -1,7 +1,7 @@
 package com.example.nytimesclean.common.ui.diffUtil
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.nytimesclean.main_page.model.Article
+import com.example.nytimesclean.main.model.Article
 
 class DiffUtilMain(
     private val oldList: MutableList<Article>,

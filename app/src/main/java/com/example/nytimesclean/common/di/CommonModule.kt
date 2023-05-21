@@ -1,9 +1,9 @@
 package com.example.nytimesclean.common.di
 
 import androidx.room.Room
-import com.example.nytimesclean.main_page.api.MainPageApi
-import com.example.nytimesclean.main_page.db.dao.NYTDatabase
-import com.example.nytimesclean.most_popular.db.dao.PopularDatabase
+import com.example.nytimesclean.main.api.MainPageApi
+import com.example.nytimesclean.main.db.dao.NYTDatabase
+import com.example.nytimesclean.popular.db.dao.PopularDatabase
 import com.example.nytimesclean.utils.Constants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
