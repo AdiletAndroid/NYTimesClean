@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
-import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentMainPageBinding
 import com.example.nytimesclean.details_main.MainPageDetailsFragment
 import com.example.nytimesclean.main.model.Article
@@ -46,10 +45,6 @@ class MainPageFragment :
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
-        val scrollListener = EndlessScrollListener(layoutManager, { page ->
-            presenter.getArticles(page)
-        }, hasMore = true)
-        binding.recyclerView.addOnScrollListener(scrollListener)
     }
 
     override fun showArticles(article: List<Article>) {

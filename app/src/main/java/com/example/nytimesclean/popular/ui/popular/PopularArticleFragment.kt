@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
-import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentPopularArticleBinding
 import com.example.nytimesclean.details_popular.PopularDetailsFragment
 import com.example.nytimesclean.popular.model.PopularArticle
@@ -48,10 +47,6 @@ class PopularArticleFragment :
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = popularAdapter
-        val scrollListener = EndlessScrollListener(layoutManager, { page ->
-            presenter.getPopular(page)
-        }, hasMore = true)
-        binding.recyclerView.addOnScrollListener(scrollListener)
     }
 
     private fun openDetailsPage(popularArticle: PopularArticle) {
