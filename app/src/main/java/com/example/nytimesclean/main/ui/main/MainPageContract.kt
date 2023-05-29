@@ -12,5 +12,7 @@ interface MainPageContract {
 
     interface MainPagePresenter: MvpPresenter<MainPageView> {
         fun getArticles(page: Int)
+
+        fun collectArticlesFlow()
     }
 }

@@ -9,8 +9,8 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
 import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentMainPageBinding
+import com.example.nytimesclean.details_main.MainPageDetailsFragment
 import com.example.nytimesclean.main.model.Article
-import com.example.nytimesclean.main.ui.details.MainPageDetailsFragment
 import com.example.nytimesclean.main.ui.main.adapter.ArticlesAdapter
 import com.example.nytimesclean.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,17 +37,19 @@ class MainPageFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setContent()
+        presenter.getArticles(1)
+        presenter.collectArticlesFlow()
+    }
+
+    private fun setContent() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
-
         binding.recyclerView.adapter = adapter
-
         val scrollListener = EndlessScrollListener(layoutManager, { page ->
             presenter.getArticles(page)
         }, hasMore = true)
         binding.recyclerView.addOnScrollListener(scrollListener)
-
-        presenter.getArticles(1)
     }
 
     override fun showArticles(article: List<Article>) {

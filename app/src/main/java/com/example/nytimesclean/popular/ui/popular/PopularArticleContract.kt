@@ -12,5 +12,7 @@ interface PopularArticleContract {
 
     interface PopularPagePresenter: MvpPresenter<PopularPageView> {
         fun getPopular(page: Int)
+
+        fun collectPopularFlow()
     }
 }

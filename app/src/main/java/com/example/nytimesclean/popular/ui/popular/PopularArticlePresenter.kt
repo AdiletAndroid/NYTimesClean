@@ -20,12 +20,11 @@ class PopularArticlePresenter(
         }
     }
 
-    override fun attach(view: PopularArticleContract.PopularPageView) {
-        super.attach(view)
+    override fun collectPopularFlow() {
         launch {
             popularInteractor.getAllPopularArticlesFlow()
                 .collect() {
-                    view.showPopular(it)
+                    view?.showPopular(it)
                 }
         }
     }

@@ -9,8 +9,8 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
 import com.example.nytimesclean.common.ui.endlessScroll.EndlessScrollListener
 import com.example.nytimesclean.databinding.FragmentPopularArticleBinding
+import com.example.nytimesclean.details_popular.PopularDetailsFragment
 import com.example.nytimesclean.popular.model.PopularArticle
-import com.example.nytimesclean.popular.ui.details.PopularDetailsFragment
 import com.example.nytimesclean.popular.ui.popular.adapter.PopularAdapter
 import com.example.nytimesclean.utils.replaceFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -39,17 +39,19 @@ class PopularArticleFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setContent()
+        presenter.getPopular(1)
+        presenter.collectPopularFlow()
+    }
+
+    private fun setContent() {
         val layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.layoutManager = layoutManager
-
         binding.recyclerView.adapter = popularAdapter
-
         val scrollListener = EndlessScrollListener(layoutManager, { page ->
             presenter.getPopular(page)
         }, hasMore = true)
         binding.recyclerView.addOnScrollListener(scrollListener)
-
-        presenter.getPopular(1)
     }
 
     private fun openDetailsPage(popularArticle: PopularArticle) {

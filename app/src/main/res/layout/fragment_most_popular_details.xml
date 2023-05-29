@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".popular.ui.details.PopularDetailsFragment">
+    tools:context=".details_popular.PopularDetailsFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

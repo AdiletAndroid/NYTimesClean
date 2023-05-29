@@ -1,4 +1,4 @@
-package com.example.nytimesclean.main.ui.details
+package com.example.nytimesclean.details_main
 
 import android.os.Bundle
 import android.text.method.LinkMovementMethod

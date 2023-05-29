@@ -12,7 +12,7 @@ fun Fragment.replaceFragment(fragment: Fragment) {
 
 fun Fragment.popBackStack() {
     val fragmentManager = requireActivity().supportFragmentManager
-    if (fragmentManager.backStackEntryCount < 2) {
+    if (fragmentManager.backStackEntryCount < 1) {
         requireActivity().finish()
     } else {
         fragmentManager.popBackStack()

@@ -21,12 +21,11 @@ class MainPagePresenter(
         }
     }
 
-    override fun attach(view: MainPageContract.MainPageView) {
-        super.attach(view)
+    override fun collectArticlesFlow() {
         launch {
             interactor.getAllLocalArticlesFlow()
                 .collect() {
-                    view.showArticles(it)
+                    view?.showArticles(it)
                 }
         }
     }
