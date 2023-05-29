@@ -13,6 +13,6 @@ Room 2.5.1,
 Koin 3.4.0, 
 Coil 2.3.0, 
 Coroutines 1.6.4, 
-Paging 3.1.1
+Timber for logging
 
 Arch Pattern: MVP
