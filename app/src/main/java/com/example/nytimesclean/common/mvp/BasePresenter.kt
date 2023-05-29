@@ -1,14 +1,13 @@
 package com.example.nytimesclean.common.mvp
 
 import androidx.annotation.CallSuper
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlin.coroutines.CoroutineContext
 
-abstract class BasePresenter<V : MvpView> : ViewModel(), MvpPresenter<V>, CoroutineScope {
+abstract class BasePresenter<V : MvpView> : MvpPresenter<V>, CoroutineScope {
 
     override val coroutineContext: CoroutineContext = SupervisorJob() + Dispatchers.Main.immediate
 

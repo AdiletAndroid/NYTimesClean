@@ -7,9 +7,9 @@ import com.example.nytimesclean.popular.repository.PopularRepository
 import com.example.nytimesclean.popular.repository.LocalPopularRepository
 import com.example.nytimesclean.popular.repository.PopularLocalRepository
 import com.example.nytimesclean.popular.interactor.PopularArticleInteractor
+import com.example.nytimesclean.popular.ui.popular.PopularArticleContract
 import com.example.nytimesclean.popular.ui.popular.PopularArticlePresenter
 import com.example.nytimesclean.utils.Constants
-import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
@@ -35,6 +35,7 @@ object PopularArticleModule : InjectionModule {
 
         factoryOf(::PopularArticleInteractor)
 
-        viewModelOf(::PopularArticlePresenter)
+        factoryOf(::PopularArticlePresenter) bind PopularArticleContract.Presenter::class
+
     }
 }

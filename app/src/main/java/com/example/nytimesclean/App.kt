@@ -7,11 +7,13 @@ import com.example.nytimesclean.popular.di.PopularArticleModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import timber.log.Timber
 
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
         setupKoin()
+        setupTimber()
     }
 
     private fun setupKoin() {
@@ -26,5 +28,9 @@ class App : Application() {
                 )
             )
         }
+    }
+
+    private fun setupTimber(){
+        Timber.plant(Timber.DebugTree())
     }
 }

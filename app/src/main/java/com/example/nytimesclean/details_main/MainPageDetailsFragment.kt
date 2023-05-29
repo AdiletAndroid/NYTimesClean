@@ -12,7 +12,7 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseFragment
 import com.example.nytimesclean.databinding.FragmentMainPageDetailsBinding
 import com.example.nytimesclean.main.model.Article
-import com.example.nytimesclean.utils.popBackStack
+import com.example.nytimesclean.utils.extantions.popBackStack
 
 private const val ARG_ARTICLE = "ARTICLE_KEY"
 

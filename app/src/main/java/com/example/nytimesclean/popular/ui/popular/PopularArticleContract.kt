@@ -6,11 +6,12 @@ import com.example.nytimesclean.popular.model.PopularArticle
 
 interface PopularArticleContract {
 
-    interface PopularPageView : MvpView {
+    interface View : MvpView {
         fun showPopular(popularArticle: List<PopularArticle>)
+        fun showLoading(isLoading: Boolean)
     }
 
-    interface PopularPagePresenter: MvpPresenter<PopularPageView> {
+    interface Presenter : MvpPresenter<View> {
         fun getPopular(page: Int)
 
         fun collectPopularFlow()

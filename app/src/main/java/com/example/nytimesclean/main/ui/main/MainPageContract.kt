@@ -6,11 +6,13 @@ import com.example.nytimesclean.main.model.Article
 
 interface MainPageContract {
 
-    interface MainPageView : MvpView {
+    interface View : MvpView {
         fun showArticles(article: List<Article>)
+        fun showLoading(isLoading: Boolean)
+
     }
 
-    interface MainPagePresenter: MvpPresenter<MainPageView> {
+    interface Presenter: MvpPresenter<View> {
         fun getArticles(page: Int)
 
         fun collectArticlesFlow()

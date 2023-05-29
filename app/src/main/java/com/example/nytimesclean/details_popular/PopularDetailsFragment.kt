@@ -10,7 +10,7 @@ import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseFragment
 import com.example.nytimesclean.databinding.FragmentMostPopularDetailsBinding
 import com.example.nytimesclean.popular.model.PopularArticle
-import com.example.nytimesclean.utils.popBackStack
+import com.example.nytimesclean.utils.extantions.popBackStack
 
 const val ARG_POPULAR = "POPULAR_KEY"
 

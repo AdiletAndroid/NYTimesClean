@@ -1,31 +1,46 @@
 package com.example.nytimesclean.popular.ui.popular
 
-import android.util.Log
 import com.example.nytimesclean.common.mvp.BasePresenter
 import com.example.nytimesclean.popular.interactor.PopularArticleInteractor
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class PopularArticlePresenter(
     private val popularInteractor: PopularArticleInteractor
-) : BasePresenter<PopularArticleContract.PopularPageView>(),
-    PopularArticleContract.PopularPagePresenter {
+) : BasePresenter<PopularArticleContract.View>(),
+    PopularArticleContract.Presenter {
 
     override fun getPopular(page: Int) {
         launch {
             try {
+                view?.showLoading(isLoading = true)
                 popularInteractor.loadPopular(page)
-            } catch (e: Exception) {
-                Log.e("popularArticles", "Error loading articles", e)
+            } catch (e: CancellationException) {
+                Timber.e(e.message)
+            } catch (t: Throwable) {
+                Timber.e(t.message)
+            } finally {
+                view?.showLoading(isLoading = false)
             }
         }
     }
 
     override fun collectPopularFlow() {
         launch {
-            popularInteractor.getAllPopularArticlesFlow()
-                .collect() {
-                    view?.showPopular(it)
-                }
+            try {
+                view?.showLoading(isLoading = true)
+                popularInteractor.getAllPopularArticlesFlow()
+                    .collect {
+                        view?.showPopular(it)
+                    }
+            } catch (e: CancellationException) {
+                Timber.e(e.message)
+            } catch (t: Throwable) {
+                Timber.e(t.message)
+            } finally {
+                view?.showLoading(isLoading = false)
+            }
         }
     }
 }

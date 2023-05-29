@@ -1,9 +1,8 @@
 package com.example.nytimesclean.popular.ui.popular
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nytimesclean.R
 import com.example.nytimesclean.common.mvp.BaseMvpFragment
@@ -11,42 +10,37 @@ import com.example.nytimesclean.databinding.FragmentPopularArticleBinding
 import com.example.nytimesclean.details_popular.PopularDetailsFragment
 import com.example.nytimesclean.popular.model.PopularArticle
 import com.example.nytimesclean.popular.ui.popular.adapter.PopularAdapter
-import com.example.nytimesclean.utils.replaceFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.example.nytimesclean.utils.extantions.replaceFragment
+import com.example.nytimesclean.utils.extantions.viewbinding.viewBinding
+import org.koin.android.ext.android.inject
 
 class PopularArticleFragment :
-    BaseMvpFragment<PopularArticleContract.PopularPageView, PopularArticleContract.PopularPagePresenter>(
+    BaseMvpFragment<PopularArticleContract.View, PopularArticleContract.Presenter>(
         R.layout.fragment_popular_article
-    ),
-    PopularArticleContract.PopularPageView {
+    ), PopularArticleContract.View {
 
-    override val presenter: PopularArticlePresenter by viewModel()
-    private lateinit var binding: FragmentPopularArticleBinding
+    override val presenter: PopularArticlePresenter by inject()
+
+    private val binding: FragmentPopularArticleBinding by viewBinding()
+
     private val popularAdapter: PopularAdapter by lazy {
         PopularAdapter { popularArticle ->
             openDetailsPage(popularArticle)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentPopularArticleBinding.inflate(inflater, container, false)
-        return binding.root
+    private val layoutManager: LinearLayoutManager by lazy {
+        LinearLayoutManager(requireContext())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setContent()
+        with(binding) {
+            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = popularAdapter
+        }
         presenter.getPopular(1)
         presenter.collectPopularFlow()
-    }
-
-    private fun setContent() {
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = popularAdapter
     }
 
     private fun openDetailsPage(popularArticle: PopularArticle) {
@@ -56,5 +50,12 @@ class PopularArticleFragment :
 
     override fun showPopular(popularArticle: List<PopularArticle>) {
         popularAdapter.updateList(popularArticle)
+    }
+
+    override fun showLoading(isLoading: Boolean) {
+        with(binding) {
+            progressBar.isVisible = isLoading
+            recyclerView.isVisible = !isLoading
+        }
     }
 }
